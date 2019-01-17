@@ -22,10 +22,13 @@ func main() {
 
 		var result map[string]interface{}
 
-		so.On("event:driverLocation", func(msg string) {
+		so.On("event", func(msg string) {
 			json.Unmarshal([]byte(msg), &result)
-			drivertEvent := fmt.Sprintf("%s%s", "event:driver:", result["driver"].(interface{}))
-			server.BroadcastTo("locationTracking", drivertEvent, msg)
+
+			event := fmt.Sprintf("%s", result["event"].(interface{}))
+			data := fmt.Sprintf("%s", result["data"].(interface{}))
+
+			server.BroadcastTo("locationTracking", event, data)
 		})
 		so.On("disconnection", func() {
 			log.Println(server.Count())
