@@ -1,45 +1,36 @@
 package main
 
 import (
-	"fmt"
+	"log"
+	"net/http"
 
-	"github.com/Shopify/sarama"
+	"github.com/googollee/go-socket.io"
 )
 
-// ExampleBroker to get metadata
-func ExampleBroker() {
-	broker := sarama.NewBroker("192.168.99.102:9092")
-	err := broker.Open(nil)
-	if err != nil {
-		panic(err)
-	}
-
-	request := sarama.MetadataRequest{Topics: []string{"test", "topic", "something", "cool"}}
-	response, err := broker.GetMetadata(&request)
-	if err != nil {
-		_ = broker.Close()
-		panic(err)
-	}
-
-	client, err := sarama.NewClient([]string{broker.Addr()}, nil)
-	if err != nil {
-		panic(err)
-	}
-
-	fmt.Println("Partitions: ")
-	fmt.Println(client.Topics())
-
-	fmt.Println("There are", len(response.Topics), "topics active in the cluster.")
-
-	fmt.Println(response.ClusterID)
-
-	if err = broker.Close(); err != nil {
-		panic(err)
-	}
-}
-
 func main() {
+	server, err := socketio.NewServer(nil)
+	if err != nil {
+		log.Fatal(err)
+	}
 
-	ExampleBroker()
+	server.On("connection", func(so socketio.Socket) {
+		log.Println("on connection")
 
+		so.Join("chat")
+		so.On("chat message", func(msg string) {
+			log.Println("emit:", so.Emit("chat message", msg))
+			server.BroadcastTo("chat", "chat message", msg)
+		})
+		so.On("disconnection", func() {
+			log.Println(server.Count())
+			log.Println("on disconnect")
+		})
+	})
+	server.On("error", func(so socketio.Socket, err error) {
+		log.Println("error:", err)
+	})
+
+	http.Handle("/socket.io/", server)
+	log.Println("Serving at localhost:5000...")
+	log.Fatal(http.ListenAndServe(":5000", nil))
 }
