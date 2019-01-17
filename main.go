@@ -16,8 +16,9 @@ func main() {
 	server.On("connection", func(so socketio.Socket) {
 		log.Println("on connection")
 
-		so.Join("chat")
-		so.On("chat message", func(msg string) {
+		so.Join("locationTracking")
+		so.On("event", func(msg string) {
+			log.Println(msg)
 			log.Println("emit:", so.Emit("chat message", msg))
 			server.BroadcastTo("chat", "chat message", msg)
 		})
