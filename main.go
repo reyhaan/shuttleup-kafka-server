@@ -1,6 +1,8 @@
 package main
 
 import (
+	"encoding/json"
+	"fmt"
 	"log"
 	"net/http"
 
@@ -17,10 +19,13 @@ func main() {
 		log.Println("on connection")
 
 		so.Join("locationTracking")
-		so.On("chat message", func(msg string) {
-			log.Println(msg)
-			log.Println("emit:", so.Emit("chat message", msg))
-			server.BroadcastTo("locationTracking", "chat message", msg)
+
+		var result map[string]interface{}
+
+		so.On("event:driverLocation", func(msg string) {
+			json.Unmarshal([]byte(msg), &result)
+			drivertEvent := fmt.Sprintf("%s%s", "event:driver:", result["driver"].(interface{}))
+			server.BroadcastTo("locationTracking", drivertEvent, msg)
 		})
 		so.On("disconnection", func() {
 			log.Println(server.Count())
