@@ -17,10 +17,10 @@ func main() {
 		log.Println("on connection")
 
 		so.Join("locationTracking")
-		so.On("event", func(msg string) {
+		so.On("chat message", func(msg string) {
 			log.Println(msg)
 			log.Println("emit:", so.Emit("chat message", msg))
-			server.BroadcastTo("chat", "chat message", msg)
+			server.BroadcastTo("locationTracking", "chat message", msg)
 		})
 		so.On("disconnection", func() {
 			log.Println(server.Count())
