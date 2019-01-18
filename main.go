@@ -7,7 +7,7 @@ import (
 	"net/http"
 
 	"github.com/googollee/go-socket.io"
-	"github.com/satyakb/go-socket.io-redis"
+	"github.com/reyhaan/go-socket.io-redis"
 )
 
 func main() {
@@ -22,18 +22,30 @@ func main() {
 	server.On("connection", func(so socketio.Socket) {
 		log.Println("on connection")
 
-		so.Join("locationTracking")
+		so.On("join", func(room string) {
+			so.Join(room)
+		})
 
 		var result map[string]interface{}
 
-		so.On("event", func(msg string) {
+		so.On("location", func(msg string) {
 			json.Unmarshal([]byte(msg), &result)
 
 			event := fmt.Sprintf("%s", result["event"].(interface{}))
 			data := fmt.Sprintf("%s", result["data"].(interface{}))
 
-			server.BroadcastTo("locationTracking", event, data)
+			server.BroadcastTo("location", event, data)
 		})
+
+		so.On("bookings", func(msg string) {
+			json.Unmarshal([]byte(msg), &result)
+
+			event := fmt.Sprintf("%s", result["event"].(interface{}))
+			data := fmt.Sprintf("%s", result["data"].(interface{}))
+
+			server.BroadcastTo("bookings", event, data)
+		})
+
 		so.On("disconnection", func() {
 			log.Println(server.Count())
 			log.Println("on disconnect")
