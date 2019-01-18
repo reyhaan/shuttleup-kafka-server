@@ -28,22 +28,14 @@ func main() {
 
 		var result map[string]interface{}
 
-		so.On("location", func(msg string) {
+		so.On("event", func(msg string) {
 			json.Unmarshal([]byte(msg), &result)
 
 			event := fmt.Sprintf("%s", result["event"].(interface{}))
 			data := fmt.Sprintf("%s", result["data"].(interface{}))
+			room := fmt.Sprintf("%s", result["room"].(interface{}))
 
-			server.BroadcastTo("location", event, data)
-		})
-
-		so.On("bookings", func(msg string) {
-			json.Unmarshal([]byte(msg), &result)
-
-			event := fmt.Sprintf("%s", result["event"].(interface{}))
-			data := fmt.Sprintf("%s", result["data"].(interface{}))
-
-			server.BroadcastTo("bookings", event, data)
+			server.BroadcastTo(room, event, data)
 		})
 
 		so.On("disconnection", func() {
