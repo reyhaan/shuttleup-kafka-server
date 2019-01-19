@@ -1,0 +1,91 @@
+{
+	"comment": "",
+	"ignore": "test",
+	"package": [
+		{
+			"checksumSHA1": "2UmMbNHc8FBr98mJFN1k8ISOIHk=",
+			"path": "github.com/garyburd/redigo/internal",
+			"revision": "569eae59ada904ea8db7a225c2b47165af08735a",
+			"revisionTime": "2018-04-04T16:07:26Z"
+		},
+		{
+			"checksumSHA1": "3kM5bMyfqvdCfgQdOb01CR1aA74=",
+			"path": "github.com/garyburd/redigo/redis",
+			"revision": "569eae59ada904ea8db7a225c2b47165af08735a",
+			"revisionTime": "2018-04-04T16:07:26Z"
+		},
+		{
+			"checksumSHA1": "nOiJs1nH1sknwVDaPGLHG8n5lDU=",
+			"path": "github.com/googollee/go-engine.io",
+			"revision": "e2f255711dcb2ea41e42c6d9d98c172d7edf6509",
+			"revisionTime": "2018-08-29T09:19:31Z"
+		},
+		{
+			"checksumSHA1": "Tv1/qmTmjl43MFulf61QbsGuu2c=",
+			"path": "github.com/googollee/go-engine.io/message",
+			"revision": "e2f255711dcb2ea41e42c6d9d98c172d7edf6509",
+			"revisionTime": "2018-08-29T09:19:31Z"
+		},
+		{
+			"checksumSHA1": "Z3Zs8QiMD9WQdAnRNqyrfuElIxg=",
+			"path": "github.com/googollee/go-engine.io/parser",
+			"revision": "e2f255711dcb2ea41e42c6d9d98c172d7edf6509",
+			"revisionTime": "2018-08-29T09:19:31Z"
+		},
+		{
+			"checksumSHA1": "gG3x5/SsTGLzczYzuT+NIdhvmSA=",
+			"path": "github.com/googollee/go-engine.io/polling",
+			"revision": "e2f255711dcb2ea41e42c6d9d98c172d7edf6509",
+			"revisionTime": "2018-08-29T09:19:31Z"
+		},
+		{
+			"checksumSHA1": "WSC+XDEXrzu11rf+gv1Y2N7v/nE=",
+			"path": "github.com/googollee/go-engine.io/transport",
+			"revision": "e2f255711dcb2ea41e42c6d9d98c172d7edf6509",
+			"revisionTime": "2018-08-29T09:19:31Z"
+		},
+		{
+			"checksumSHA1": "HKE4UBOwXdi/Qt48b0da4Z/ytSY=",
+			"path": "github.com/googollee/go-engine.io/websocket",
+			"revision": "e2f255711dcb2ea41e42c6d9d98c172d7edf6509",
+			"revisionTime": "2018-08-29T09:19:31Z"
+		},
+		{
+			"checksumSHA1": "uMBEeqYDf96qKgACmmF6vc2cXj8=",
+			"path": "github.com/googollee/go-socket.io",
+			"revision": "0ad7206c347a1c531174c35fb3b68be22360a80c",
+			"revisionTime": "2018-12-14T08:46:11Z"
+		},
+		{
+			"checksumSHA1": "EFilcRi6b0Bf3nckKo3UbeqoW50=",
+			"path": "github.com/gorilla/websocket",
+			"revision": "95ba29eb981bbb27d92e1f70bf8a1949452d926b",
+			"revisionTime": "2018-12-06T07:02:39Z"
+		},
+		{
+			"checksumSHA1": "gcLub3oB+u4QrOJZcYmk/y2AP4k=",
+			"path": "github.com/nu7hatch/gouuid",
+			"revision": "179d4d0c4d8d407a32af483c2354df1d2c91e6c3",
+			"revisionTime": "2013-12-21T20:05:32Z"
+		},
+		{
+			"checksumSHA1": "q4NYXCGI+uIv0b17Gs5a0GGpZQM=",
+			"path": "github.com/reyhaan/go-socket.io-redis",
+			"revision": "dc327ab9793d6cc9e56922d9029ae9574820db4a",
+			"revisionTime": "2019-01-18T02:03:56Z"
+		},
+		{
+			"checksumSHA1": "XRXAaaT6j62Ly4XlIRFA0NYfaMY=",
+			"path": "github.com/satyakb/go-socket.io-redis/cmap_string_cmap",
+			"revision": "2306cd33e355142809fb7538a96d6c4b4ba1b8ae",
+			"revisionTime": "2017-09-06T05:13:56Z"
+		},
+		{
+			"checksumSHA1": "dOy1Y5iTiDHmO2uNh7Wpnzk3Efo=",
+			"path": "github.com/satyakb/go-socket.io-redis/cmap_string_socket",
+			"revision": "2306cd33e355142809fb7538a96d6c4b4ba1b8ae",
+			"revisionTime": "2017-09-06T05:13:56Z"
+		}
+	],
+	"rootPath": "shuttleup-kafka-server"
+}

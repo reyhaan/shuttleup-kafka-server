@@ -1,0 +1,18 @@
+version: "2"
+
+services:
+  app:
+    image: golang:latest
+    volumes:
+      - .:/go/src/shuttleup-kafka
+    working_dir: /go/src/shuttleup-kafka
+    command: go run main.go
+    links:
+      - redis
+    ports:
+      - "5000:5000"
+    depends_on:
+      - redis
+  
+  redis:
+    image: redis:alpine
