@@ -1,0 +1,6 @@
+build:
+  docker:
+    web: Dockerfile
+  config:
+    ENV: prod
+    REDIS_URL: https://shuttleup-redis-server.herokuapp.com

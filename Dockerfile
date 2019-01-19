@@ -1,11 +1,8 @@
 FROM golang:latest
 
-RUN mkdir /app 
-ADD . /app/ 
-WORKDIR /app 
-# RUN apt-get update; \
-#     apt-get install -y ca-certificates
-# RUN go get
+RUN mkdir /go/src/shuttleup-kafka
+ADD . /go/src/shuttleup-kafka/
+WORKDIR /go/src/shuttleup-kafka 
 RUN go build -o main .
 
-CMD ["/app/main"]
+CMD ["/go/src/shuttleup-kafka/main"]
