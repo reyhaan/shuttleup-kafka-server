@@ -3,4 +3,4 @@ build:
     web: Dockerfile
   config:
     ENV: PROD
-    REDIS_URL: shuttleup-redis-server.herokuapp.com
+    REDIS_URL: localhost
