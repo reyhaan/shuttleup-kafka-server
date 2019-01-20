@@ -7,7 +7,6 @@ import (
 	"net/http"
 	"os"
 
-	redis2 "github.com/go-redis/redis"
 	socketio "github.com/googollee/go-socket.io"
 	redis "github.com/reyhaan/go-socket.io-redis"
 )
@@ -26,12 +25,12 @@ func main() {
 		log.Fatal(err)
 	}
 
-	_opts, err := redis2.ParseURL(redisURL)
-	if err != nil {
-		panic(err)
-	}
+	// _opts, err := redis2.ParseURL(redisURL)
+	// if err != nil {
+	// 	panic(err)
+	// }
 
-	opts := map[string]string{"host": _opts.Addr, "port": "6379"}
+	opts := map[string]string{"host": redisURL}
 
 	server.SetAdaptor(redis.Redis(opts))
 	server.On("connection", func(so socketio.Socket) {
