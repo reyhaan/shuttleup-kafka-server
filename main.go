@@ -65,5 +65,5 @@ func main() {
 	http.Handle("/", http.FileServer(http.Dir("./asset")))
 	log.Println("Serving at localhost:" + redisURL)
 	log.Println("Serving at localhost:" + os.Getenv("PORT"))
-	log.Fatal(http.ListenAndServe(os.Getenv("PORT"), nil))
+	log.Fatal(http.ListenAndServe(":"+os.Getenv("PORT"), nil))
 }
