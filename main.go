@@ -64,5 +64,5 @@ func main() {
 	http.Handle("/socket.io/", server)
 	http.Handle("/", http.FileServer(http.Dir("./asset")))
 	log.Println("Serving at localhost:5000...")
-	log.Fatal(http.ListenAndServe(":5000", nil))
+	log.Fatal(http.ListenAndServe("", nil))
 }
