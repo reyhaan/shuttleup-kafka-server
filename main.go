@@ -63,6 +63,7 @@ func main() {
 
 	http.Handle("/socket.io/", server)
 	http.Handle("/", http.FileServer(http.Dir("./asset")))
+	log.Println("Serving at localhost:" + redisURL)
 	log.Println("Serving at localhost:" + os.Getenv("PORT"))
 	log.Fatal(http.ListenAndServe(os.Getenv("PORT"), nil))
 }
