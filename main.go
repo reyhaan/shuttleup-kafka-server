@@ -25,11 +25,6 @@ func main() {
 		log.Fatal(err)
 	}
 
-	// _opts, err := redis2.ParseURL(redisURL)
-	// if err != nil {
-	// 	panic(err)
-	// }
-
 	opts := map[string]string{"host": redisURL}
 
 	server.SetAdaptor(redis.Redis(opts))
